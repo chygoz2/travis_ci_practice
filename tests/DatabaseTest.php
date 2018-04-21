@@ -26,7 +26,7 @@
 			}
         }
     
-        protected function tearDown()
+        public function tearDown()
         {
             
         }
@@ -36,7 +36,7 @@
         	$this->assertNotNull($this->conn);
         }
 
-        protected function testDatabaseNameIsCorrect()
+        public function testDatabaseNameIsCorrect()
         {
         	$this->assertEquals($this->database, "hng");
         }
