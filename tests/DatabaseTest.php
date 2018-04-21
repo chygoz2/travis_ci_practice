@@ -4,6 +4,7 @@
 	// class DatabaseTest
     {
         private $conn = null;
+        private $database;
     
         public function setUp()
         {
@@ -19,6 +20,7 @@
 			if($contains !== false){
 				require_once "../db.php";
 				$this->conn = $conn;
+				$this->database = DB_DATABASE;
 			}else{
 				$conn = null;
 			}
@@ -31,7 +33,8 @@
     
         public function testIfConnObjectIsSet()
         {
-        	$this->assertNotNull($this->conn);
+        	// $this->assertNotNull($this->conn);
+        	$this->assertEquals($this->database, "hng");
         }
     
     }
