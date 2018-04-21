@@ -3,21 +3,22 @@ language: php
 php: 
   - 7.0
 
-before_script:
-  - composer install --no-interaction
+services:
+  - mysql
 
 addons:
   apt:
     packages:
       - php5-fpm
       - php5-mysql
-      - nginx
     
 hosts:
   - localhost
 
 before_install:
   - export PATH=vendor/bin:$PATH
+  - travis_retry composer self-update
+  - composer install
 
 
 before_script:
