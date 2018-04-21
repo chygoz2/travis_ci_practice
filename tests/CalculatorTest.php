@@ -26,7 +26,7 @@
         public function testAdd()
         {
             $result = $this->calculator->add(1, 2);
-            $this->assertEquals(3, $result);
+            $this->assertSame(3, $result);
         }
     
     }
