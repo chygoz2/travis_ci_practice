@@ -13,12 +13,12 @@
 				return;
 			}
 
-			$fcontents = htmlentities(file_get_contents("../db.php"));
+			// $fcontents = htmlentities(file_get_contents("../db.php"));
 			//check if file contains "../config.php";
 
-			$contains = stripos($fcontent, "config.php");
+			// $contains = stripos($fcontent, "config.php");
 			if($contains !== false){
-				require_once "../db.php";
+				require_once "../config.php";
 				$this->conn = $conn;
 				$this->database = DB_DATABASE;
 			}else{
@@ -33,7 +33,11 @@
     
         public function testIfConnObjectIsSet()
         {
-        	// $this->assertNotNull($this->conn);
+        	$this->assertNotNull($this->conn);
+        }
+
+        protected function testDatabaseNameIsCorrect()
+        {
         	$this->assertEquals($this->database, "hng");
         }
     
