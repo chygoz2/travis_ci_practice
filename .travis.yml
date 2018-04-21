@@ -22,15 +22,15 @@ before_install:
 
 
 before_script:
-  - mysql -e "CREATE DATABASE IF NOT EXISTS hng;" -u hng
-  - mysql -e "CREATE USER 'hng'@'localhost' IDENTIFIED BY 'hng';" -u hng
-  - mysql -e "GRANT ALL PRIVILEGES ON hng.* TO 'hng'@'localhost';" -u hng
-  - mysql -e "FLUSH PRIVILEGES;" -u hng
+  - mysql -e "CREATE DATABASE IF NOT EXISTS hng;" -u root
+  - mysql -e "CREATE USER 'hng'@'localhost' IDENTIFIED BY 'hng';" -u root
+  - mysql -e "GRANT ALL PRIVILEGES ON hng.* TO 'hng'@'localhost';" -u root
+  - mysql -e "FLUSH PRIVILEGES;" -u root
   - sudo service php5-fpm restart
 
 script:
-  - mysql -e "DROP DATABASE hng;" -u hng
-  - mysql -e "CREATE DATABASE IF NOT EXISTS hng;" -u hng
-  - mysql -e "GRANT ALL PRIVILEGES ON hng.* TO 'hng'@'localhost';" -u hng
-  - mysql -e "FLUSH PRIVILEGES;" -u hng
+  - mysql -e "DROP DATABASE hng;" -u root
+  - mysql -e "CREATE DATABASE IF NOT EXISTS hng;" -u root
+  - mysql -e "GRANT ALL PRIVILEGES ON hng.* TO 'hng'@'localhost';" -u root
+  - mysql -e "FLUSH PRIVILEGES;" -u root
   - ./vendor/bin/phpunit
