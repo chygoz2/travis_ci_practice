@@ -27,7 +27,6 @@ before_script:
   - mysql -e "GRANT ALL PRIVILEGES ON hng.* TO 'hng'@'localhost';" -u root
   - mysql -e "FLUSH PRIVILEGES;" -u root
   - sudo service php5-fpm restart
-  - sudo service nginx restart
 
 script:
   - mysql -e "DROP DATABASE hng;" -u root
