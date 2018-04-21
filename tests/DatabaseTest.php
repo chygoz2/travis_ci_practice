@@ -15,7 +15,7 @@
 			$fcontents = htmlentities(file_get_contents("../db.php"));
 			//check if file contains "../config.php";
 
-			$contains = stripos($fcontent, "../config.php");
+			$contains = stripos($fcontent, "config.php");
 			if($contains !== false){
 				require_once "../db.php";
 				$this->conn = $conn;
