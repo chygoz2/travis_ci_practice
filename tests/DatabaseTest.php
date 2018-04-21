@@ -3,8 +3,8 @@
 	class DatabaseTest extends PHPUnit_Framework_TestCase
 	// class DatabaseTest
     {
-        private $conn = null;
-        private $database;
+        public $conn;
+        public $database;
     
         public function setUp()
         {
@@ -13,16 +13,14 @@
 				return;
 			}
 
-			// $fcontents = htmlentities(file_get_contents("../db.php"));
+			$fcontents = htmlentities(file_get_contents("../db.php"));
 			//check if file contains "../config.php";
 
-			// $contains = stripos($fcontent, "config.php");
+			$contains = stripos($fcontents, "config.php");
 			if($contains !== false){
-				require_once "../config.php";
+				require "../db.php";
 				$this->conn = $conn;
 				$this->database = DB_DATABASE;
-			}else{
-				$conn = null;
 			}
         }
     
@@ -42,5 +40,9 @@
         }
     
     }
+
+    // $c = new DatabaseTest();
+    // $c->setUp();
+    // echo $c->database;
 
 ?>
