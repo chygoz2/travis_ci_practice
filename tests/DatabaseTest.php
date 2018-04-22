@@ -2,43 +2,24 @@
 
 	class DatabaseTest extends PHPUnit_Framework_TestCase
 	// class DatabaseTest
-    {
-        public $conn;
-        public $database;
-    
-        public function setUp()
+    {  
+        public function testIfConnObjectIsSet()
         {
-		    if(!file_exists("db.php")){
-				$this->conn = null;
-				return;
-			}
+        	$file_exists = file_exists("db.php");
+        	$this->assertTrue($file_exists);
 
 			$fcontents = htmlentities(file_get_contents("db.php"));
 			//check if file contains "../config.php";
+			$contains = stripos($fcontents, "../config.php");
 
-			$contains = stripos($fcontents, "config.php");
+			$this->assertTrue($contains !== false);
+			
 			if($contains !== false){
 				require "db.php";
-				$this->conn = $conn;
-				$this->database = DB_DATABASE;
+				$this->assertNotNull($conn);
 			}
         }
-    
-        public function tearDown()
-        {
-            
-        }
-    
-        public function testIfConnObjectIsSet()
-        {
-        	$this->assertNotNull($this->conn);
-        }
 
-        public function testDatabaseNameIsCorrect()
-        {
-        	$this->assertSame($this->database, "hng");
-        }
-    
     }
 
 ?>
